@@ -5,7 +5,7 @@ size = width, height = 3000, 2000
 speed = [2, 2]
 black = 0, 0, 0
 
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode()
 
 ball = pygame.image.load("SoccerBall.png")
 ballrect = ball.get_rect()
