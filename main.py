@@ -2,8 +2,13 @@ import sys
 import pygame as pg
 import copy
 
+#constants
+NUM_BLOCKS_WIDTH = 20   #the number of blocks in the width of the game; height is the same
+BLOCK_WIDTH = 20 #this is the pixel width of a block; height is the same
+PIXELS_BETWEEN_BLOCKS = 1 #pixels between blocks
+
 class Snake:
-    movement = 26
+    movement = BLOCK_WIDTH + 1
     
     def __init__(self,startingSpot):
         self.snakeHeadRect = startingSpot
@@ -46,7 +51,7 @@ class SnakeBlock:
     color = (255,0,0)
     
     def __init__(self,startingSpace):
-        self.image = pg.Surface((25,25)).convert()
+        self.image = pg.Surface((BLOCK_WIDTH,BLOCK_WIDTH)).convert()
         self.rect = startingSpace # an array
         self.image.fill(SnakeBlock.color)
         self.nextBlock = None
@@ -68,12 +73,12 @@ class SnakeBlock:
         else:
             self.nextBlock = SnakeBlock(self.rect)
 
-class Fruit:
-    #TODO
+
         
 def main():
     pg.init()
-    screen_size = (521,521)
+    lengthOfScreen = (NUM_BLOCKS_WIDTH * BLOCK_WIDTH) + PIXELS_BETWEEN_BLOCKS * (NUM_BLOCKS_WIDTH + 1)
+    screen_size = (lengthOfScreen,lengthOfScreen)
     screen = pg.display.set_mode(screen_size)
     color = (0,0,0)
     background = pg.Surface(screen.get_size()).convert()
